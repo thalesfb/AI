@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Mapa Interativo do Campus IFC Videira</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+  <h1>Mapa Interativo do Campus IFC Videira</h1>
+
+  <p style="text-align: center;">Clique no mapa para selecionar os pontos.</p>
+  <div class="map-container">
+    <div id="mapWrapper">
+      <!-- Imagem do mapa do campus -->
+      <img src="images/mapa-ifc-videira.jpg" alt="Mapa do IFC Videira" id="campusMap">
+      <!-- Elemento SVG para desenhar linhas e pontos adicionais no mapa -->
+      <svg id="mapSVG"></svg>
+    </div>
+  </div>
+
+  <div class="controls">
+    <!-- Exibe os pontos selecionados pelo usuário -->
+    <p>Ponto 1: <span id="point1">Nenhum</span></p>
+    <p>Ponto 2: <span id="point2">Nenhum</span></p>
+    <!-- Botões para selecionar o algoritmo de busca desejado -->
+    <button id="searchBFS">Buscar com BFS</button>
+    <button id="searchDFS">Buscar com DFS</button>
+    <button id="searchUCS">Buscar com UCS</button>
+    <button id="searchAStar">Buscar com A*</button>
+    <!-- Botão para redefinir os pontos selecionados -->
+    <button id="reset">Redefinir</button>
+  </div>
+
+  <!-- Área onde o resultado da busca será exibido -->
+  <div id="result"></div>
+
+  <!-- Importa os scripts JavaScript responsáveis pela lógica do grafo e algoritmos de busca -->
+  <script src="js/grafo.js"></script>
+  <script src="js/bfs.js"></script>
+  <script src="js/dfs.js"></script>
+  <script src="js/ucs.js"></script>
+  <script src="js/a_star.js"></script>
+  <!-- Script para inicializar a biblioteca Panzoom no mapa -->
+  <script src="https://unpkg.com/panzoom@9.4.0/dist/panzoom.min.js"></script>
+  <!-- Script principal para gerenciar a interação do usuário com o mapa -->
+  <script src="js/script.js"></script>
+</body>
+
+</html>

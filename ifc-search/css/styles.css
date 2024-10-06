@@ -1,0 +1,108 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+}
+
+/* Centraliza o título principal */
+h1 {
+  text-align: center;
+}
+
+/* Estiliza a área de controles para melhor organização dos botões e informações */
+.controls {
+  margin-top: 20px;
+  text-align: center;
+}
+
+/* Define o espaçamento entre parágrafos dentro da área de controle */
+.controls p {
+  margin: 5px 0;
+  font-size: 18px;
+}
+
+/* Estiliza os botões para que fiquem visíveis e fáceis de clicar */
+button {
+  margin: 10px 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Define as propriedades da área do mapa, incluindo dimensões e bordas */
+.map-container {
+  position: relative;
+  overflow: hidden;
+  width: 800px; /* Ajuste conforme necessário para o tamanho do mapa */
+  height: 600px; /* Ajuste conforme necessário para o tamanho do mapa */
+  margin: 0 auto;
+  border: 1px solid #ccc;
+}
+
+/* Estiliza o wrapper do mapa para manter o mapa e os elementos SVG juntos */
+#mapWrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 10;
+}
+
+/* Define a imagem do mapa como responsiva ao wrapper */
+#campusMap {
+  width: 100%;
+  height: 100%;
+  cursor: grab;
+  display: block;
+}
+
+#campusMap,
+#mapSVG {
+  pointer-events: auto; /* Permite que o elemento receba eventos de clique */
+}
+
+/* Estiliza os marcadores dos pontos adicionados pelo usuário */
+.marker {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  background-color: blue;
+  border: 2px solid white;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+#mapWrapper, #campusMap {
+  width: 100%;
+  height: 100%;
+  display: block; /* Assegura que estão sendo renderizados no DOM */
+}
+
+/* Estiliza o marcador para o ponto inicial selecionado */
+.marker.point1 {
+  background-color: green;
+}
+
+/* Estiliza o marcador para o ponto final selecionado */
+.marker.point2 {
+  background-color: red;
+}
+
+/* Torna a área do mapa responsiva em telas menores */
+@media (max-width: 600px) {
+  .map-container {
+    width: 100%;
+    height: auto;
+  }
+}
+
+#mapSVG {
+  pointer-events: none; /* Permite que o clique passe pelo SVG até a imagem abaixo */
+}
+
+#mapWrapper {
+  border: 2px solid red; /* Adiciona uma borda vermelha para ver se o wrapper é visível */
+}
+
+#campusMap {
+  border: 2px solid blue; /* Adiciona uma borda azul para ver se a imagem é visível */
+}
