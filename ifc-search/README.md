@@ -39,12 +39,12 @@ ifc-search/
 ├── css/
 │   └── styles.css
 ├── js/
-│   ├── grafo.js
+│   ├── a_star.js
 │   ├── bfs.js
 │   ├── dfs.js
-│   ├── ucs.js
-│   ├── a_star.js
-│   └── script.js
+│   ├── grafo.js
+│   ├── script.js
+│   └── ucs.js
 └── README.md
 ```
 
