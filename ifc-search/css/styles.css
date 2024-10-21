@@ -1,17 +1,38 @@
+/* styles.css */
+
 body {
   font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Estilo para o cabeçalho */
+.header-container {
+  text-align: center;
   margin: 20px;
 }
 
 /* Centraliza o título principal */
 h1 {
   text-align: center;
+  margin-top: 20px;
 }
 
-/* Estiliza a área de controles para melhor organização dos botões e informações */
+/* Estilos para a div principal */
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Estiliza a área de controles */
 .controls {
   margin-top: 20px;
   text-align: center;
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #f9f9f9;
 }
 
 /* Define o espaçamento entre parágrafos dentro da área de controle */
@@ -20,89 +41,63 @@ h1 {
   font-size: 18px;
 }
 
-/* Estiliza os botões para que fiquem visíveis e fáceis de clicar */
-button {
+/* Estiliza os botões e o select */
+button,
+select {
   margin: 10px 5px;
   padding: 10px 20px;
   font-size: 16px;
   cursor: pointer;
 }
 
-/* Define as propriedades da área do mapa, incluindo dimensões e bordas */
-.map-container {
+select {
+  padding: 8px;
+}
+
+/* Define as propriedades da área do mapa */
+#mapWrapper {
   position: relative;
-  overflow: hidden;
-  width: 800px; /* Ajuste conforme necessário para o tamanho do mapa */
-  height: 600px; /* Ajuste conforme necessário para o tamanho do mapa */
+  width: 100%;
+  max-width: 100%;
+  height: auto;
   margin: 0 auto;
   border: 1px solid #ccc;
 }
 
-/* Estiliza o wrapper do mapa para manter o mapa e os elementos SVG juntos */
-#mapWrapper {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  z-index: 10;
-}
-
-/* Define a imagem do mapa como responsiva ao wrapper */
+/* Define as propriedades do mapa */
 #campusMap {
   width: 100%;
-  height: 100%;
-  cursor: grab;
+  height: auto;
   display: block;
+  position: relative;
+  z-index: 1;
 }
 
-#campusMap,
-#mapSVG {
-  pointer-events: auto; /* Permite que o elemento receba eventos de clique */
-}
-
-/* Estiliza os marcadores dos pontos adicionados pelo usuário */
-.marker {
+/* Define as propriedades da camada de rede */
+#network {
   position: absolute;
-  width: 24px;
-  height: 24px;
-  background-color: blue;
-  border: 2px solid white;
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-}
-
-#mapWrapper, #campusMap {
+  top: 0;
+  left: 0;
+  z-index: 2;
   width: 100%;
   height: 100%;
-  display: block; /* Assegura que estão sendo renderizados no DOM */
 }
 
-/* Estiliza o marcador para o ponto inicial selecionado */
-.marker.point1 {
-  background-color: green;
+/* Estiliza o resultado */
+#result {
+  margin-top: 20px;
+  font-size: 18px;
 }
 
-/* Estiliza o marcador para o ponto final selecionado */
-.marker.point2 {
-  background-color: red;
+/* Estiliza o tempo de execução */
+#executionTime {
+  font-weight: bold;
+  color: #333;
 }
 
 /* Torna a área do mapa responsiva em telas menores */
 @media (max-width: 600px) {
-  .map-container {
+  #mapWrapper {
     width: 100%;
-    height: auto;
   }
-}
-
-#mapSVG {
-  pointer-events: none; /* Permite que o clique passe pelo SVG até a imagem abaixo */
-}
-
-#mapWrapper {
-  border: 2px solid red; /* Adiciona uma borda vermelha para ver se o wrapper é visível */
-}
-
-#campusMap {
-  border: 2px solid blue; /* Adiciona uma borda azul para ver se a imagem é visível */
 }
