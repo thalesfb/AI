@@ -5,47 +5,70 @@
   <meta charset="UTF-8">
   <title>Mapa Interativo do Campus IFC Videira</title>
   <link rel="stylesheet" href="css/styles.css">
+  <!-- Importa a biblioteca vis-network para manipular grafos e redes -->
+  <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
 </head>
 
 <body>
-  <h1>Mapa Interativo do Campus IFC Videira</h1>
+  <!-- Div do cabeçalho, contendo o título e uma breve instrução para o usuário -->
+  <div class="header-container">
+    <h1>Mapa Interativo do Campus IFC Videira</h1>
+    <p>Clique nos pontos do mapa para selecionar a origem e o destino.</p>
+  </div>
 
-  <p style="text-align: center;">Clique no mapa para selecionar os pontos.</p>
-  <div class="map-container">
+  <!-- Div principal que contém o mapa interativo e os controles -->
+  <div class="main-container">
+
+    <!-- Div que contém o mapa do campus e a rede de visualização -->
     <div id="mapWrapper">
-      <!-- Imagem do mapa do campus -->
+      <!-- Imagem do mapa do campus do IFC Videira -->
       <img src="images/mapa-ifc-videira.jpg" alt="Mapa do IFC Videira" id="campusMap">
-      <!-- Elemento SVG para desenhar linhas e pontos adicionais no mapa -->
-      <svg id="mapSVG"></svg>
+      <!-- Div usada pela biblioteca vis-network para desenhar o grafo sobre a imagem do mapa -->
+      <div id="network"></div>
     </div>
+
+    <!-- Div que contém os controles para selecionar nós e visualizar os resultados -->
+    <div class="controls">
+      <!-- Exibe o ponto de partida e ponto de chegada selecionados pelo usuário -->
+      <p>Ponto de Partida: <span id="point1">Nenhum</span></p>
+      <p>Ponto de Chegada: <span id="point2">Nenhum</span></p>
+
+      <!-- Exibe a distância entre os pontos selecionados após a execução do algoritmo -->
+      <p>Distância entre os pontos: <span id="distance">0</span></p>
+
+      <!-- Controle para selecionar o algoritmo de busca para encontrar o caminho -->
+      <label for="algorithmSelect">Selecione o Algoritmo:</label>
+      <select id="algorithmSelect">
+        <option value="A*" selected>A*</option> <!-- Algoritmo A* (A-estrela), usado para busca heurística -->
+        <option value="BFS">Busca em Largura (BFS)</option>
+        <!-- Algoritmo BFS, útil para encontrar caminhos mínimos em grafos não ponderados -->
+        <option value="DFS">Busca em Profundidade (DFS)</option>
+        <!-- Algoritmo DFS, busca todos os nós em profundidade -->
+        <option value="UCS">Custo Uniforme (UCS)</option>
+        <!-- Algoritmo UCS, similar ao Dijkstra, usado para encontrar caminhos mínimos em grafos ponderados -->
+      </select>
+
+      <!-- Botão para iniciar a busca pelo caminho entre os pontos selecionados -->
+      <button id="searchButton">Buscar Caminho</button>
+
+      <!-- Botão para redefinir todos os pontos selecionados e resetar o mapa -->
+      <button id="reset">Redefinir</button>
+
+      <!-- Exibe o tempo de execução do algoritmo de busca selecionado -->
+      <p>Tempo de Execução: <span id="executionTime">0 ms</span></p>
+    </div>
+
+    <!-- Div onde os resultados do caminho (como o caminho em si) são exibidos -->
+    <div id="result"></div>
   </div>
 
-  <div class="controls">
-    <!-- Exibe os pontos selecionados pelo usuário -->
-    <p>Ponto 1: <span id="point1">Nenhum</span></p>
-    <p>Ponto 2: <span id="point2">Nenhum</span></p>
-    <!-- Botões para selecionar o algoritmo de busca desejado -->
-    <button id="searchBFS">Buscar com BFS</button>
-    <button id="searchDFS">Buscar com DFS</button>
-    <button id="searchUCS">Buscar com UCS</button>
-    <button id="searchAStar">Buscar com A*</button>
-    <!-- Botão para redefinir os pontos selecionados -->
-    <button id="reset">Redefinir</button>
-  </div>
-
-  <!-- Área onde o resultado da busca será exibido -->
-  <div id="result"></div>
-
-  <!-- Importa os scripts JavaScript responsáveis pela lógica do grafo e algoritmos de busca -->
-  <script src="js/grafo.js"></script>
-  <script src="js/bfs.js"></script>
-  <script src="js/dfs.js"></script>
-  <script src="js/ucs.js"></script>
-  <script src="js/a_star.js"></script>
-  <!-- Script para inicializar a biblioteca Panzoom no mapa -->
-  <script src="https://unpkg.com/panzoom@9.4.0/dist/panzoom.min.js"></script>
-  <!-- Script principal para gerenciar a interação do usuário com o mapa -->
-  <script src="js/script.js"></script>
+  <!-- Importa os scripts JavaScript para manipular o mapa e o grafo -->
+  <script src="js/grafo.js"></script> <!-- Define a estrutura do grafo, incluindo nós e arestas -->
+  <script src="js/bfs.js"></script> <!-- Contém a implementação do algoritmo BFS -->
+  <script src="js/dfs.js"></script> <!-- Contém a implementação do algoritmo DFS -->
+  <script src="js/ucs.js"></script> <!-- Contém a implementação do algoritmo UCS -->
+  <script src="js/a_star.js"></script> <!-- Contém a implementação do algoritmo A* -->
+  <script src="js/script.js"></script> <!-- Script principal que manipula a interação do usuário com o mapa -->
 </body>
 
 </html>
