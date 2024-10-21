@@ -80,7 +80,7 @@ A interface permite que o usuário interaja diretamente com o mapa do campus par
 **Elementos da Interface**:
 - **Mapa Interativo**: Permite a seleção dos pontos de interesse no campus.
 - **Botões de Controle**: Botões para iniciar a busca com diferentes algoritmos e redefinir a seleção de pontos.
-- **Exibição dos Resultados**: Mostra as coordenadas dos pontos selecionados e o caminho encontrado.
+- **Exibição dos Resultados**: Mostra o tempo utilizado para a busca e o caminho encontrado.
 
 ## Possíveis Melhorias Futuras
 - **Visualização Gráfica Avançada**: Implementar uma visualização mais detalhada do caminho encontrado, desenhando uma linha ligando os pontos diretamente no mapa.
